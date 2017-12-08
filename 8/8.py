@@ -8,6 +8,7 @@ regs = {}
 with open( fn) as f:
     pattern_a = '(?P<reg>[a-z]+) (?P<op1>[a-z]+) (?P<amount1>[-0-9]+) if (?P<reg2>[a-z]+) (?P<op2>[<=>!]+) (?P<amount2>[-0-9]+)' 
     pa = re.compile(pattern_a)
+    highwater = 0
     for line in f:
         #print(line)
         ma = pa.match(line)
@@ -53,6 +54,8 @@ with open( fn) as f:
             else:
                 print('fail', cond_reg, condition, cond_val )
 
+            if regs[reg] > highwater:
+                highwater = regs[reg]
             #print(regs)
         else:
             print( line, 'doesn\'t match regex' )
@@ -63,5 +66,7 @@ for r in regs:
         max_reg = regs[r]
 
 print( 'max_reg=%d'%(max_reg) )
+
+print( 'highwater=%d'%(highwater) )
 
 
