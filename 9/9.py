@@ -21,6 +21,7 @@ in_garbage = False
 negated = False
 
 score = 0
+garbage_cnt = 0
 
 for i,a in enumerate(data):
 
@@ -49,10 +50,13 @@ for i,a in enumerate(data):
             score+=opened
             opened-=1
             closed+=1
+    else:
+        garbage_cnt += 1
         
 
 print('opened = %d'%(opened))
 print('closed = %d'%(closed))
 
 print('score = %d'%(score))
+print('garbage = %d'%(garbage_cnt))
 
