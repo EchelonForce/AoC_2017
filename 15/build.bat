@@ -3,5 +3,6 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_
 
 popd
 cl 15p1.c
+cl 15p2.c
 
 pause
